@@ -1,0 +1,38 @@
+﻿# 1.11.23 Markus Laanemae
+# Funktsioon 1 – arvutab ringi pindala etteantud raadiuse järgi.
+# Lisa funktsioonile lihtne abifail koos näite kasutamisega
+# Funktsioon 2 – koosta funktsioon, mis puhastab etteantud inimese täisnime ülearustest tühikutest ja täpitähtedest. Arvesta, et nimi võib ka hakata täpitähega. Nimi väljastatakse esitähed suurtena.
+# Lisa abitekst oma funktsiooni kasutamisest ja näide.
+
+function Arvuta-RingiPindala($r){
+   <#
+    .SYNOPSIS
+        ringi pindala
+    .DESCRIPTION
+        ringi pindala raadiuse järgi. kontroll pole lisatud
+    .EXAMPLE
+        Arvuta-RingiPindala(10)
+ 
+    #>
+        $s = 3.14*[math]::Pow($r , 2)
+        "Ringi pindala on: $s"
+}
+
+function Puhasta-Nimi($nimi){
+ <#
+    .SYNOPSIS
+        Puhastab kasutaja nime
+    .DESCRIPTION
+       Eemaldab tühikud ja täpitähed ning muudab nime alguse tähed
+    .EXAMPLE
+    Puhasta-Nimi("Nimi Siia")
+
+    #>
+    $nimi = $nimi.toLower().trim().Replace("ä","a").Replace("õ","o").Replace("ü","u").Replace("ö","o")
+    (Get-Culture).TextInfo.ToTitleCase($nimi)
+
+}
+
+
+Arvuta-RingiPindala(10)
+Puhasta-Nimi("     Äbigäl Ärnöld   ")

@@ -1,0 +1,6 @@
+Clear-Host
+Write-Host "`t**************Markus Laanemae**************"
+Write-Host "`t**************Be Positive***********"
+Set-Location -Path "C:\Users\mlaanemae\Desktop"
+$host.ui.RawUI.WindowTitle = "Markus laanemae"
+ 

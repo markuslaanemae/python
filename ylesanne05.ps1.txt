@@ -1,0 +1,19 @@
+﻿#Super Markus
+#kuvab erinevat infot
+Clear-Host
+"********** Masina nimi **********"
+Hostname
+"********** OS nimi **********"
+(Get-CimInstance Win32_OperatingSystem).Caption
+"********** IPv4 **********"
+(Get-NetIPAddress | Where-Object {$_.InterfaceAlias -eq "Ethernet" -and $_.AddressFamily -eq "IPv4"}).IPAddress
+"********** RAM **********"
+$TotalPhysicalMemory = (Get-CimInstance -ClassName Win32_ComputerSystem).TotalPhysicalMemory
+$TotalPhysicalMemoryGB = $TotalPhysicalMemory / 1GB
+$TotalPhysicalMemoryGB
+"********** CPU **********"
+Get-WmiObject -Class Win32_Processor | Select-Object Name, Manufacturer, MaxClockSpeed, NumberOfCores, NumberOfLogicalProcessors
+"********** GPU **********"
+Get-CimInstance -ClassName Win32_VideoController | Select-Object Name, AdapterCompatibility, AdapterRAM, DriverVersion
+"********** Kasutajad **********"
+Get-LocalUser

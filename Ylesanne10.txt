@@ -1,0 +1,14 @@
+﻿# 1.11.23
+
+$scriptpath = $MyInvocation.MyCommand.Path
+$dir = Split-Path $scriptpath
+
+$xml = [xml](Get-Content $dir\customers.xml)
+$customers = $xml.customers.customer
+
+foreach ($customer in $customers)
+{
+        if($customer.country -eq "Poland"){
+        $customer.full_name
+        }
+}
